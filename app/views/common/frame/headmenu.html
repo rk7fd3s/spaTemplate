@@ -1,0 +1,81 @@
+<ul class="nav navbar-top-links navbar-right">
+    <li uib-dropdown>
+        <a uib-dropdown-toggle data-toggle="uib-dropdown"><span class="badge"></span>
+            <i class="fa fa-bell fa-fw"></i>  <i class="fa fa-caret-down"></i>
+        </a>
+
+
+        <ul class="uib-dropdown-menu uib-dropdown-alerts" uib-dropdown-menu>
+            <li>
+                <a href="/timeline">
+                    <div>
+                        <i class="fa fa-comment fa-fw"></i> New Comment
+                        <span class="pull-right text-muted small">4 minutes ago</span>
+                    </div>
+                </a>
+            </li>
+            <li class="divider"></li>
+            <li>
+                <a ui-sref="root.sandbox.ngModel">
+                    <div>
+                        <i class="fa fa-info-circle fa-fw"></i> SandBox add a page.
+                        <span class="pull-right text-muted small">12 minutes ago</span>
+                    </div>
+                </a>
+            </li>
+            <li class="divider"></li>
+            <li>
+                <a href="/mail/sent">
+                    <div>
+                        <i class="fa fa-envelope fa-fw"></i> Message Sent
+                        <span class="pull-right text-muted small">4 minutes ago</span>
+                    </div>
+                </a>
+            </li>
+            <li class="divider"></li>
+            <li>
+                <a ui-sref="root.sandbox.ngRepeat">
+                    <div>
+                        <i class="fa fa-info-circle fa-fw"></i> SandBox add a page.
+                        <span class="pull-right text-muted small">4 minutes ago</span>
+                    </div>
+                </a>
+            </li>
+            <li class="divider"></li>
+            <li>
+                <a ui-sref="root.top">
+                    <div>
+                        <i class="fa fa-power-off fa-fw"></i> System Rebooted
+                        <span class="pull-right text-muted small">4 minutes ago</span>
+                    </div>
+                </a>
+            </li>
+            <li class="divider"></li>
+            <li>
+                <a class="text-center" href="/alert/list">
+                    <strong>See All Alerts</strong>
+                    <i class="fa fa-angle-right"></i>
+                </a>
+            </li>
+        </ul>
+        <!-- /.dropdown-alerts -->
+    </li>
+    <!-- /.dropdown -->
+
+    <li uib-dropdown>
+        <a uib-dropdown-toggle data-toggle="uib-dropdown">
+            <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
+        </a>
+        <ul class="uib-dropdown-menu uib-dropdown-user" uib-dropdown-menu>
+            <li><a ui-sref="root.user.profile"><i class="fa fa-user fa-fw"></i> User Profile</a>
+            </li>
+            <li><a ui-sref="root.user.setting"<i class="fa fa-gear fa-fw"></i> Settings</a>
+            </li>
+            <li class="divider"></li>
+            <li><a ui-sref="logout"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+            </li>
+        </ul>
+        <!-- /.dropdown-user -->
+    </li>
+    <!-- /.dropdown -->
+</ul>

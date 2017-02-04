@@ -1,0 +1,47 @@
+<div class="navbar-default sidebar" role="navigation">
+  <div class="sidebar-nav navbar-collapse">
+    <ul class="nav in" id="side-menu">
+      <li ui-sref-active="active">
+        <a ui-sref="root.blank"><i class="fa fa-file-o fa-fw"></i>Blank</a>
+      </li>
+      <li ng-class="{active: isActiveMenu('root.sandbox.')}">
+          <a href="" ng-click="check('root.sandbox.')"><i class="fa fa-gamepad fa-fw"></i>SandBox<span class="fa arrow"></span></a>
+          <ul class="nav" uib-collapse="isCollapseMenu('root.sandbox.')">
+              <li ui-sref-active="active">
+                  <a ui-sref="root.sandbox.ngModel"><i class="fa fa-cubes"></i>ngModel</a>
+              </li>
+              <li ui-sref-active="active">
+                  <a ui-sref="root.sandbox.ngRepeat"><i class="fa fa-repeat"></i>nngRepeat</a>
+              </li>
+          </ul>
+      </li>
+
+      <li ng-class="{active: isActiveMenu('root.menu.')}">
+          <a href="" ng-click="check('root.menu.')"><i class="fa fa-folder-o fa-fw"></i>menu<span class="fa arrow"></span></a>
+          <ul class="nav" uib-collapse="isCollapseMenu('root.menu.')!=0">
+              <li ui-sref-active="active">
+                  <a ui-sref="root.menu.sub1"><i class="fa fa-file-o fa-fw"></i>sub1</a>
+              </li>
+              <li ng-class="{active: isActiveMenu('root.menu.sub2.')}">
+                  <a href="" ng-click="check('root.menu.sub2.')"><i class="fa fa-folder-o fa-fw"></i>sub2<span class="fa arrow"></span></a>
+                  <ul class="nav" uib-collapse="isCollapseMenu('root.menu.sub2.')!=0">
+                      <li ui-sref-active="active">
+                          <a ui-sref="root.menu.sub2.sub1"><i class="fa fa-file-o fa-fw"></i>sub2_sub1</a>
+                      </li>
+                      <li ui-sref-active="active">
+                          <a ui-sref="root.menu.sub2.sub2"><i class="fa fa-file-o fa-fw"></i>sub2_sub2</a>
+                      </li>
+                      <li ui-sref-active="active">
+                          <a ui-sref="root.menu.sub2.sub3"><i class="fa fa-file-o fa-fw"></i>sub2_sub3</a>
+                      </li>
+                  </ul>
+              </li>
+              <li ui-sref-active="active">
+                  <a ui-sref="root.menu.sub3"><i class="fa fa-file-o fa-fw"></i>sub3</a>
+              </li>
+          </ul>
+      </li>
+    </ul>
+  </div>
+  <!-- /.sidebar-collapse -->
+</div>

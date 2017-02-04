@@ -1,0 +1,150 @@
+@charset "UTF-8";
+// style.styl
+
+/* bootstrap override */
+
+// 右上ナビ
+.navbar-top-links
+  .dropdown-menu
+    min-width: 220px
+
+@media (max-width: 768px)
+  .navbar-top-links li a
+    padding: 5px
+    min-height: 30px
+
+.navbar-right
+  float: right!important
+
+  .dropdown-menu
+    right: 0
+    left: auto
+
+base-bg-color = #00796B
+sidebar-bg-color = #009688
+nav-bg-active-color = #B2DFDB
+nav-bg-hover-color = lightness(nav-bg-active-color, 90%)
+nav-bg-active-category-color = lightness(nav-bg-active-color, 50%)
+
+/** sb-admin sidebar **/
+sb-admin-border-color = lightness(nav-bg-active-color, 90%) //#e7e7e7
+sb-admin-background-color = #eeeeee
+
+@media (min-width: 768px)
+  #page-wrapper
+    border-left: 1px solid sb-admin-border-color
+
+.sidebar
+  clear: both
+
+  a
+    color: lightness(sidebar-bg-color, 90%)
+
+  >.sidebar-nav
+    border-bottom-width: 0
+
+    >.nav
+      border-top-width: 0
+
+  ul
+    border-top: 1px solid sb-admin-border-color
+
+    li
+      border-bottom: 1px solid sb-admin-border-color
+
+      &.active
+        ul
+          li:last-child
+            border-bottom: 0
+        // a
+        //   color: #FF5722;
+
+      a.active
+        background-color: sb-admin-background-color
+
+  a.active > .fa.arrow:before
+    content: "\f107"
+
+
+/** sb-admin **/
+
+/** bootstrap **/
+.navbar-default .navbar-brand
+  color: #fff
+
+  &:hover, &:focus
+    color: #fff
+
+.navbar-right
+  a
+    color: lightness(sidebar-bg-color, 90%)
+
+.navbar-default .navbar-toggle
+  border-color: lightness(sidebar-bg-color, 95%)
+
+  &:hover
+    background-color: lightness(sidebar-bg-color, 90%)
+  &:focus
+    background-color: transparent;
+
+
+/** bootstrap **/
+
+.navbar-default
+  background-color: base-bg-color
+  border-color: sb-admin-border-color
+
+
+.sidebar-nav
+  background-color: sidebar-bg-color
+
+
+
+//.nav>li>a:focus,
+.nav>li>a:hover
+  background-color: nav-bg-hover-color
+
+.nav>li>a:hover
+  color: #fff
+
+.nav>li.active>a, .nav>li>a:focus
+.nav .open>a, .nav .open>a:focus, .nav .open>a:hover
+  background-color: nav-bg-active-category-color
+
+.nav>li.active>a[ui-sref]
+  background-color: nav-bg-active-color
+  color: #FF5722
+
+
+div.sidebar
+  ul
+    li
+      a
+        i
+          margin-right: .5em;
+
+/* bootstrap override end */
+
+
+body
+  background-color: sidebar-bg-color
+
+@media (min-width: 768px) {
+  .container {
+    max-width: none;
+  }
+}
+
+.alerts
+  position: absolute;
+  top: 0;
+  left: 6%;
+  width: 88%;
+  z-index: 9999;
+
+  >div
+    margin-bottom : 0px;
+
+input[readonly][uib-datepicker-popup]{
+  background-color: #fff;
+}
