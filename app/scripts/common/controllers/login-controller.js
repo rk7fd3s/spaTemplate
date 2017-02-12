@@ -16,12 +16,10 @@ define([
       var cLogin = JSON.parse($cookies.get('c_login'));
       angular.extend(infoLogin, cLogin);
     } catch(e) {
-
+      // なにもしない
     }
 
     $scope.login = infoLogin;
-
-    console.log($scope.login);
 
     // ログインボタン押下イベント
     $scope.loginAction = function() {
@@ -36,8 +34,9 @@ define([
                   username: valid_login.username,
                   rm: valid_login.rm
                 };
-                console.log(cookieLogin);
-                $cookies.putObject('c_login', cookieLogin);
+                // 30日後のdateオブジェクト
+                var expire = new Date((new Date()).getTime() + 60 * 60 * 24 * 30 * 1000);
+                $cookies.putObject('c_login', cookieLogin, {expires: expire});
               }
               $state.go('root.top');
             }
