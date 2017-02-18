@@ -364,7 +364,8 @@ grunt.initConfig({
             'angular-translate': 'empty:',
             'angular-translate-loader-static-files': 'empty:',
             'angular-translate-storage-cookie': 'empty:',
-            'angular-translate-storage-local': 'empty:'
+            'angular-translate-storage-local': 'empty:',
+            'angular-mocks': 'empty:'
           },
           optimize: 'none',
           out:'dist/scripts/main.js'
