@@ -10,7 +10,7 @@ define([
       restrict: 'E',
       replace: true,
       scope: {},
-      controller: function($scope, $translate, $state) {
+      controller: function($scope, $translate, $state, $timeout) {
         $scope.currentStateName = '';
         $scope.openStateName = '';
 
@@ -62,6 +62,11 @@ define([
         });
 
         $sideBar.collapse('hide');
+
+        // windowのloadイベントを発火させる(高さ調整のため)
+        $timeout(function(){
+          angular.element(window).trigger('load');
+        }, 0);
       }
     }
   });
