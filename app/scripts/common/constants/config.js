@@ -22,7 +22,8 @@ define([
     },
 
     'API_BASE_URL': {
-      local: '/api',
+      // local: '/api',
+      local: '/mock',
       dev: 'dev.example.com:9000/api',
       stage: 'stage.example.com:8080/api',
       product: 'product.example.com:8080/api',
@@ -36,26 +37,26 @@ define([
 
   }).service('VariableConfig', function($location, ConstatnsConfig){
     // 現在の環境名を返却
-    var getEnvName = function() {
-      var hostNm = $location.host();
+    function getEnvName() {
+      const hostNm = $location.host();
       var envName = 'local';
 
       // 各環境を判別し、ConstatnsConfig.ENV_NAMEで定義した環境名をreturnさせる
       angular.forEach([0,1,2,3], function(i) {
-        var val = ConstatnsConfig.ENV_NAME[i];
+        const val = ConstatnsConfig.ENV_NAME[i];
         if (hostNm.indexOf(ConstatnsConfig.HOST_NAME[val]) == 0) {
           envName = val;
         }
       });
 
       return envName;
-    };
-    var envName = getEnvName();
-    var apiBaseUrl = (ConstatnsConfig.API_BASE_URL[envName].indexOf('/') == 0) ? '' : '//';
-        apiBaseUrl += ConstatnsConfig.API_BASE_URL[envName];
+    }
+
+    const envName = getEnvName();
+    const apiBaseUrl = (ConstatnsConfig.API_BASE_URL[envName].indexOf('/') == 0) ? ConstatnsConfig.API_BASE_URL[envName] : '//' + ConstatnsConfig.API_BASE_URL[envName];
 
     return {
-      envName: envName,
+      envName,
       path: {
         auth: {
           login: apiBaseUrl + '/login'

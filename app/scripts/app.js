@@ -11,6 +11,7 @@ define([
     'ngResource',
     'ngSanitize',
     'ngTouch',
+    'ngMockE2E',
     'ui.router',
     'ui.bootstrap',
     'ui.bootstrap.tpls',

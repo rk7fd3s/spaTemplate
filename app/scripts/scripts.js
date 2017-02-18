@@ -1,6 +1,7 @@
 'use strict';
 
 define([
+  'mocks',
   'common/constants/config',
   'common/controllers/global-controller',
   'common/controllers/login-controller',

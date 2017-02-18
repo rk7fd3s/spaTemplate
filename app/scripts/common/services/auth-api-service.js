@@ -11,33 +11,11 @@ define(['app'], function(app) {
     this.authenticate = function(requestModel) {
       var deferred = $q.defer();
 
-      // TODO 仮
-      if (requestModel.un === 'admin') {
-        deferred.resolve({
-          code: '0000',
-          status: 'success',
-          userInfo: {
-            xxx: 'xxxx'
-          }
-        });
-      } else if (requestModel.un === 'user') {
-        deferred.resolve({
-          code: '0000',
-          status: 'success',
-          userInfo: {
-            xxx: 'xxxx'
-          }
-        });
-      } else {
-        deferred.reject();
-      }
-
-      // resources.authenticate.defaultPost(requestModel,function (resModel){
-      //   deferred.resolve(resModel) ;
-      // }, function (error, status){
-      //   console.error(error, status);
-      //   deferred.reject(error.message);
-      // });
+      resources.authenticate.defaultPost(requestModel, function(resModel) {
+        deferred.resolve(resModel);
+      }, function(error, status) {
+        deferred.reject(error.message);
+      });
 
       return deferred.promise;
     };
