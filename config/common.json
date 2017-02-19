@@ -1,0 +1,26 @@
+{
+  "SITE_STATE": {
+    "SITE_NAME": "- SPA template -",
+    "APP_VERSION" : "0.0.0"
+  },
+  "API_SETTING": {
+    "REQUEST_ACTION": {
+      "defaultGet": {"method": "GET", "timeout": 10000},
+      "defaultPost": {"method": "POST", "timeout": 10000},
+      "defaultJsonp": {"method": "JSONP", "timeout": 10000, "params": {"callback": "JSON_CALLBACK"}}
+    },
+    "PATH": {
+      "AUTH": {
+        "LOGIN": "/login"
+      }
+    }
+  },
+  "MESSAGE": {
+    "SUCCESS": {
+      "200": "sccuess."
+    },
+    "ERROR": {
+      "404": "not found."
+    }
+  }
+}

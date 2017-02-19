@@ -77,7 +77,8 @@ require([
     'scripts',
     'metisMenu',
     'sb-admin-2',
-    'templates'
+    'templates',
+    'configJson'
     //////////app script END//////////
 
 ],function(angular, app){

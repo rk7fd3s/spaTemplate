@@ -1,0 +1,4 @@
+{
+  "ENV": "product",
+  "API_BASE_URL": "www.example.com:8080/api"
+}

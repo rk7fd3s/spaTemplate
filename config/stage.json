@@ -1,0 +1,4 @@
+{
+  "ENV": "stage",
+  "API_BASE_URL": "stage.example.com:8080/api"
+}
