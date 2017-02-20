@@ -1,0 +1,27 @@
+<label for="">configJson</label>
+<table class="table">
+  <tr>
+    <td>SITE_NAME</td>
+    <td>{{configCommon.SITE_STATE.SITE_NAME}}</td>
+  </tr>
+    <tr>
+      <td>APP_VERSION</td>
+      <td>{{configCommon.SITE_STATE.APP_VERSION}}</td>
+    </tr>
+  <tr>
+    <td>API_SETTING</td>
+    <td></td>
+  </tr>
+  <tr ng-repeat="(name, setting) in configCommon.API_SETTING">
+    <td>{{name}}</td>
+    <td>{{setting}}</td>
+  </tr>
+    <tr>
+      <td>ENV</td>
+      <td>{{configEnv.ENV}}</td>
+    </tr>
+  <tr>
+    <td>API_BASE_URL</td>
+    <td>{{configEnv.API_BASE_URL}}</td>
+  </tr>
+</table>

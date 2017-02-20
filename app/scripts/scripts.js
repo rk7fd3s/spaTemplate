@@ -15,6 +15,7 @@ define([
 
   'sandbox/controllers/sandbox-controller',
   // 'sandbox/controllers/sandbox-list-controller',
+  'sandbox/controllers/sandbox-configJson-controller',
   'sandbox/controllers/sandbox-ngrepeat-controller',
   'sandbox/factories/sandBoxItemModelFactory'
 

@@ -16,9 +16,9 @@
     }
   },
   "MESSAGE": {
-    "SUCCESS": {
-      "200": "sccuess."
-    },
+    "9000": "not enagh data to $1",
+    "9001": "need $1 to $2",
+    "9003": "Sorry, cannot to $1",
     "ERROR": {
       "404": "not found."
     }
