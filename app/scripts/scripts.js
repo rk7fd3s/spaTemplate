@@ -9,7 +9,8 @@ define([
   'common/directives/header',
   'common/directives/headmenu',
   'common/directives/sidebar',
-  'common/services/alert-service',
+  'common/services/alert-service',,
+  'common/services/message-service',
   'common/services/auth-api-service',
   'common/services/auth-service',
 
