@@ -1,10 +1,7 @@
 'use strict';
 
-define([
-  'app',
-], function(app){
-  'use strict';
-  app.controller('loginController', function($scope, $state, $cookies, alertService, authService) {
+define(['app'], function(app) {
+  app.controller('loginController', function($scope, $state, $cookies, alertService, authService, messageService) {
 
     const infoLogin = {
       username: '',
@@ -15,7 +12,7 @@ define([
     try {
       const cLogin = JSON.parse($cookies.get('c_login'));
       angular.extend(infoLogin, cLogin);
-    } catch(e) {
+    } catch (e) {
       // なにもしない
     }
 
@@ -38,17 +35,23 @@ define([
                   rm: valid_login.rm
                 };
                 // 30日期限でcookieの登録
-                $cookies.putObject('c_login', cookieLogin, {expires: new Date((new Date()).getTime() + 60 * 60 * 24 * 30 * 1000)});
+                $cookies.putObject('c_login', cookieLogin, {
+                  expires: new Date((new Date()).getTime() + 60 * 60 * 24 * 30 * 1000)
+                });
               }
 
               // topへ遷移
               $state.go('root.top');
+            },
+            function(errorModel) {
+              const error = errorModel.data;
+              alertService.addAlert('danger', messageService.getMessage(error.code, error.args) || error.message, 10000);
             }
           );
         },
         // 入力チェックNG
         function(error) {
-          alertService.addAlert('warning', error.message, 5000);
+          alertService.addAlert('warning', messageService.getMessage(error.code, error.args) || error.message, 5000);
         }
       );
     };

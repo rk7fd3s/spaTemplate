@@ -7,8 +7,8 @@
             <span class="icon-bar"></span>
         </button>
         <a class="navbar-brand" ui-sref="root.top">
-          {{ConstatnsConfig.SITE_NAME}}
-          <small style="margin-left: 1em; font-size: 70%; color: #fbb;" ng-if="VariableConfig.envName!=ConstatnsConfig.ENV_NAME[0]">is launched on {{VariableConfig.envName}}</small>
+          {{configCommon.SITE_STATE.SITE_NAME}}
+          <small style="margin-left: 1em; font-size: 70%; color: #fbb;" ng-if="configEnv.ENV!='product'">is launched on {{configEnv.ENV}}</small>
         </a>
     </div>
     <headmenu></headmenu>

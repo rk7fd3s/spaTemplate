@@ -1,10 +1,10 @@
 'use strict';
 
 define(['app'], function(app) {
-  app.service('authApiService', function($resource, $q, ConstatnsConfig, VariableConfig) {
+  app.service('authApiService', function($resource, $q, configCommon, configEnv) {
 
     var resources = {
-      authenticate: $resource(VariableConfig.path.auth.login, {}, ConstatnsConfig.API_REQUEST_ACTION)
+      authenticate: $resource(configEnv.API_BASE_URL + configCommon.API_SETTING.PATH.AUTH.LOGIN, {}, configCommon.API_SETTING.REQUEST_ACTION)
     };
 
     // 一覧画面を取得
@@ -14,7 +14,7 @@ define(['app'], function(app) {
       resources.authenticate.defaultPost(requestModel, function(resModel) {
         deferred.resolve(resModel);
       }, function(error, status) {
-        deferred.reject(error.message);
+        deferred.reject(error);
       });
 
       return deferred.promise;

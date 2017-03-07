@@ -9,7 +9,8 @@ module.exports = function (grunt) {
   require('jit-grunt')(grunt,{
     bower:'grunt-bower-task',
     ngtemplates: 'grunt-angular-templates',
-    configureProxies:'grunt-connect-proxy'
+    configureProxies:'grunt-connect-proxy',
+    ngconstant: 'grunt-ng-constant',
   });
 
   var serveStatic = require('serve-static');
@@ -41,6 +42,13 @@ grunt.initConfig({
           livereload: '<%= connect.options.livereload %>'
         }
       },
+      configJson: {
+        files: ['config/**/*.json'],
+        tasks: ['ngconstant:local'],
+        options: {
+          livereload: '<%= connect.options.livereload %>'
+        }
+      },
       livereload: {
         files: [
           'app/views/**/*.html',
@@ -51,6 +59,39 @@ grunt.initConfig({
         ],
         options: {
           livereload: '<%= connect.options.livereload %>'
+        }
+      }
+    },
+    ngconstant: {
+      options: {
+        name: 'app',
+        dest: '.tmp/scripts/configJson.js',
+        template: require('fs')
+            .readFileSync(grunt.template.process('config')+'/templates_jsons.js')
+            .toString()
+      },
+      local: {
+        constants: {
+          configEnv: grunt.file.readJSON('config/local.json'),
+          configCommon: grunt.file.readJSON('config/common.json')
+        }
+      },
+      dev: {
+        constants: {
+          configEnv: grunt.file.readJSON('config/dev.json'),
+          configCommon: grunt.file.readJSON('config/common.json')
+        }
+      },
+      stage: {
+        constants: {
+          configEnv: grunt.file.readJSON('config/stage.json'),
+          configCommon: grunt.file.readJSON('config/common.json')
+        }
+      },
+      product: {
+        constants: {
+          configEnv: grunt.file.readJSON('config/product.json'),
+          configCommon: grunt.file.readJSON('config/common.json')
         }
       }
     },
@@ -367,7 +408,7 @@ grunt.initConfig({
             'angular-translate-storage-local': 'empty:',
             'angular-mocks': 'empty:'
           },
-          optimize: 'none',
+          optimize: 'uglify',
           out:'dist/scripts/main.js'
         }
       }
@@ -438,8 +479,11 @@ grunt.initConfig({
     if (target === 'dist') {
       return grunt.task.run(['build','configureProxies', 'connect:dist:keepalive']);
     }
+    var env = target || 'local';
+    grunt.log.writeln('Set enviroment ' + env);
     grunt.task.run([
       'clean:server',
+      'ngconstant:' + env,
       'bower:install',
       'concurrent:server',
       'configureProxies',
@@ -448,15 +492,22 @@ grunt.initConfig({
     ]);
   });
 
-  grunt.registerTask('build', [
-    'clean:dist',
-    'bower:install',
-    'concurrent:dist',
-    'copy:static',
-    'copy:json',//filerevが困難
-    'filerev',
-    'filerev_replace'
-  ]);
+
+  grunt.registerTask('build', 'Compile', function (target) {
+    var env = target || 'product';
+
+    grunt.task.run([
+      'clean:dist',
+      'ngconstant:' + env,
+      'bower:install',
+      'concurrent:dist',
+      'copy:static',
+      'copy:json',//filerevが困難
+      'filerev',
+      'filerev_replace'
+    ]);
+
+  });
 
   grunt.registerTask('default', [
     'newer:jshint',

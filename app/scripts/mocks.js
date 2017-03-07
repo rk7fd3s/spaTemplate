@@ -7,13 +7,11 @@ define(["app"], function(app) {
 
     const success = {
       code: 1000,
-      message: 'Login success',
       resultSet: {}
     };
 
     const error = {
       code: 4000,
-      message: 'Bad Request.',
       resultSet: {}
     };
 
@@ -24,47 +22,49 @@ define(["app"], function(app) {
 
       if ((!angular.isString(request.un) || request.un === '') ||
         (!angular.isString(request.pw) || request.pw === '') ||
-        (!angular.isNumber(request.rm) || request.rm > 1 || request.rm < 0)
+        (!(request.rm + '').match(/^[0|1]$/))
       ) {
-        return [400, error, {}];
+        error.code = 4403;
+        error.message = 'Forbidden';
+        return [403, error, {}];
       }
 
       var response = [];
       if (request.un === 'Admin' && request.pw === 'admin') {
-        success.resultSet.token = 'ADMIN_LOGIN_TOKEN';
-
         // 1日期限でcookieの登録
         $cookies.put('XSRF-TOKEN', success.resultSet.token, {
           expires: new Date((new Date()).getTime() + 60 * 60 * 24 * 1 * 1000)
         });
 
         success.resultSet = {
-          roll: 'admin'
+          roll: 'admin',
+          token: 'ADMIN_LOGIN_TOKEN'
         };
 
         response = [200, success, {}];
       } else if (request.un === 'User' && request.pw === 'user') {
-        success.resultSet.token = 'USER_LOGIN_TOKEN';
-
         // 1日期限でcookieの登録
         $cookies.put('XSRF-TOKEN', success.resultSet.token, {
           expires: new Date((new Date()).getTime() + 60 * 60 * 24 * 1 * 1000)
         });
 
         success.resultSet = {
-          roll: 'operator'
+          roll: 'operator',
+          token: 'USER_LOGIN_TOKEN'
         };
 
         response = [200, success, {}];
+      } else if (request.un === '400') {
+        error.code = '4400';
+        error.message = 'Bad Request';
+        response = [400, error, {}];
       } else {
-        error.message = 'Internal Server Error'
+        error.code = '4500';
+        error.message = 'Internal Server Error';
         response = [500, error, {}];
       }
 
-        return response;
-      // $timeout(function() {
-      //   return response;
-      // }, 1000);
+      return response;
     });
   });
 });

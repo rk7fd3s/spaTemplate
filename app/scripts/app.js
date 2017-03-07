@@ -65,7 +65,12 @@ define([
       templateUrl: '/views/sandbox/main.html'
     }).state('root.sandbox.ngModel', {
       url: '/ngModel',
+      controller: function($scope) {$scope.sandbox.subTitle = 'ngModel';},
       templateUrl: '/views/sandbox/ngModel.html'
+    }).state('root.sandbox.configJson', {
+      url: '/configJson',
+      controller: 'sandboxConfigJsonCtrl',
+      templateUrl: '/views/sandbox/configJson.html'
     }).state('root.sandbox.ngRepeat', {
       url: '/ngRepeat',
       controller: 'sandboxNgRepeatCtrl',

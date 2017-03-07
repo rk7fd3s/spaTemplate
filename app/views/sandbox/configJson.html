@@ -1,0 +1,62 @@
+<label for="">configJson</label>
+<div class="table-responsive">
+  <table class="table ">
+    <caption>configCommon</caption>
+    <colgroup>
+      <col class="col-xs-3">
+      <col class="col-xs-9">
+    </colgroup>
+    <tbody>
+      <tr>
+        <td>SITE_NAME</td>
+        <td>{{configCommon.SITE_STATE.SITE_NAME}}</td>
+      </tr>
+      <tr>
+        <td>APP_VERSION</td>
+        <td>{{configCommon.SITE_STATE.APP_VERSION}}</td>
+      </tr>
+      <tr>
+        <td>API_SETTING</td>
+        <td></td>
+      </tr>
+      <tr ng-repeat="(name, setting) in configCommon.API_SETTING">
+        <td>{{name}}</td>
+        <td>{{setting}}</td>
+      </tr>
+    </tbody>
+  </table>
+  <table class="table ">
+    <caption>configEnv</caption>
+    <colgroup>
+      <col class="col-xs-3">
+      <col class="col-xs-9">
+    </colgroup>
+    <tbody>
+      <tr>
+        <td>ENV</td>
+        <td>{{configEnv.ENV}}</td>
+      </tr>
+      <tr>
+        <td>API_BASE_URL</td>
+        <td>{{configEnv.API_BASE_URL}}</td>
+      </tr>
+    </tbody>
+  </table>
+  <table class="table ">
+    <caption>messageService</caption>
+    <colgroup>
+      <col class="col-xs-3">
+      <col class="col-xs-9">
+    </colgroup>
+    <tbody>
+      <tr>
+        <td>9000</td>
+        <td>{{message.m9000}}</td>
+      </tr>
+      <tr>
+        <td>9001</td>
+        <td>{{message.m9001}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

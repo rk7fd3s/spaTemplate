@@ -1,0 +1,25 @@
+{
+  "SITE_STATE": {
+    "SITE_NAME": "- SPA template -",
+    "APP_VERSION" : "0.0.0"
+  },
+  "API_SETTING": {
+    "REQUEST_ACTION": {
+      "defaultGet": {"method": "GET", "timeout": 10000},
+      "defaultPost": {"method": "POST", "timeout": 10000},
+      "defaultJsonp": {"method": "JSONP", "timeout": 10000, "params": {"callback": "JSON_CALLBACK"}}
+    },
+    "PATH": {
+      "AUTH": {
+        "LOGIN": "/login"
+      }
+    }
+  },
+  "MESSAGE": {
+    "9000": "Not enough data to $1",
+    "9001": "Need $1 to $2",
+    "9003": "Sorry, cannot to $1",
+    "4403": "Login failed. Wrong or and password.",
+    "4500": "The service is not available. Please try again later."
+  }
+}

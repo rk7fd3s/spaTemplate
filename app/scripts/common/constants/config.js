@@ -56,7 +56,7 @@ define([
     const apiBaseUrl = (ConstatnsConfig.API_BASE_URL[envName].indexOf('/') == 0) ? ConstatnsConfig.API_BASE_URL[envName] : '//' + ConstatnsConfig.API_BASE_URL[envName];
 
     return {
-      envName,
+      envName: envName,
       path: {
         auth: {
           login: apiBaseUrl + '/login'
