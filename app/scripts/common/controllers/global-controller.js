@@ -1,11 +1,8 @@
 'use strict';
 
-define([
-  'app',
-], function(app){
-  'use strict';
-  app.controller('globalController', function($scope, ConstatnsConfig, VariableConfig) {
-    $scope.ConstatnsConfig = ConstatnsConfig;
-    $scope.VariableConfig = VariableConfig;
+define(['app'], function(app){
+  app.controller('globalController', function($scope, configCommon, configEnv) {
+    $scope.configCommon = configCommon;
+    $scope.configEnv = configEnv;
   });
 });

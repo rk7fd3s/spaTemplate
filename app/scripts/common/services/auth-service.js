@@ -10,17 +10,17 @@ define(['app'], function(app) {
       if (login == null || typeof login === 'undefined') {
         delay.reject({
           code: '9000',
-          message: 'not enagh data to login'
+          args: ['login']
         });
       } else if (login.username == null || typeof login.username === 'undefined' || login.username === '') {
         delay.reject({
           code: '9001',
-          message: 'need username to login'
+          args: ['username', 'login']
         });
       } else if (login.password == null || typeof login.password === 'undefined' || login.password === '') {
         delay.reject({
-          code: '9002',
-          message: 'need password to login'
+          code: '9001',
+          args: ['password', 'login']
         });
       } else {
         delay.resolve(login);
