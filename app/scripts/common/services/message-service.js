@@ -5,7 +5,7 @@ define(['app'], function(app) {
 
     // メッセージコードと置換する文字列を引数を渡して、メッセージを取得
     this.getMessage = function(code) {
-      const args = Array.prototype.slice.call(arguments, 1);
+      var args = Array.prototype.slice.call(arguments, 1);
 
       // メッセージ設定取得
       const messageCondig = configCommon.MESSAGE;
