@@ -1,7 +1,7 @@
 'use strict';
 
 define(['app'], function(app) {
-  app.service('sandboxService', function($q) {
+  app.service('sandboxService', function() {
 
   });
 });

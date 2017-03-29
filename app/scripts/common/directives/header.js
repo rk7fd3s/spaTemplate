@@ -6,6 +6,6 @@ define(['app'], function(app) {
 			templateUrl: '/views/common/frame/header.html',
 			restrict: 'E',
 			replace: true,
-		}
+		};
 	});
 });

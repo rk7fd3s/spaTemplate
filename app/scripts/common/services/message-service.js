@@ -10,10 +10,10 @@ define(['app'], function(app) {
       // メッセージ設定取得
       const messageCondig = configCommon.MESSAGE;
 
-      if (typeof args === 'undefined' || args == null) {
+      if (typeof args === 'undefined' || args === null) {
         return '';
       }
-      if (args.length == 1 && typeof(args[0]) === 'object') {
+      if (args.length === 1 && typeof(args[0]) === 'object') {
         args = args[0];
       }
 
@@ -22,7 +22,7 @@ define(['app'], function(app) {
         const message = messageCondig[code];
 
         // $1, $2, ... を第２引数以降の値に置き換えて返却
-        return message.replace(/\$(\d+)/g, function(match, i, index, orgin) {
+        return message.replace(/\$(\d+)/g, function(match, i) {
           if (i - 1 in args) {
             return args[i - 1];
           }

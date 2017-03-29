@@ -3,7 +3,6 @@
 define([
   'app',
 ], function(app){
-  'use strict';
   app.controller('sandboxNgRepeatCtrl', function($scope, SandBoxItemModel) {
     $scope.sandbox.subTitle = 'ngRepeat';
 
