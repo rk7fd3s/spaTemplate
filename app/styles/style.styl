@@ -65,6 +65,20 @@ sb-admin-background-color = #eeeeee
   a.active > .fa.arrow:before
     content: "\f107"
 
+.login-panel
+  background-color: transparent;
+  border-color: transparent;
+
+  .panel-heading
+    background-color: transparent;
+    color: #fff;
+    font-size: 200%
+    text-align: center;
+
+  .panel-body
+    border-radius: 4px;
+    background-color: #fff;
+
 
 /** sb-admin **/
 
@@ -154,3 +168,9 @@ body
 input[readonly][uib-datepicker-popup]{
   background-color: #fff;
 }
+
+.login-panel
+  .panel-heading
+    .fa-stack
+      font-size: 60%;
+      vertical-align: text-top;

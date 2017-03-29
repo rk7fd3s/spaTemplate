@@ -14,7 +14,7 @@ define([
       if (itemData) {
         this.setData(itemData);
       }
-    };
+    }
 
     SandBoxItemModel.prototype = {
       setData: function(itemData) {
@@ -61,11 +61,11 @@ define([
         min = Math.min(Math.min(r, g), b);
 
     // hue の計算
-    if (max == min) {
+    if (max === min) {
       h = 0; // 本来は定義されないが、仮に0を代入
-    } else if (max == r) {
+    } else if (max === r) {
       h = 60 * (g - b) / (max - min) + 0;
-    } else if (max == g) {
+    } else if (max === g) {
       h = (60 * (b - r) / (max - min)) + 120;
     } else {
       h = (60 * (r - g) / (max - min)) + 240;
@@ -80,7 +80,7 @@ define([
       // 円錐モデルの場合
       s = max - min;
     } else {
-      s = (max == 0)
+      s = (max === 0)
         ? 0 // 本来は定義されないが、仮に0を代入
         : (max - min) / max * 255;
     }
@@ -109,7 +109,7 @@ define([
     h = h % 360;
 
     // 特別な場合 saturation = 0
-    if (s == 0) {
+    if (s === 0) {
       // → RGB は V に等しい
       v = Math.round(v);
       return {'r': v, 'g': v, 'b': v};
@@ -121,7 +121,7 @@ define([
         f = (h / 60) - i,
         p = v * (1 - s),
         q = v * (1 - f * s),
-        t = v * (1 - (1 - f) * s)
+        t = v * (1 - (1 - f) * s);
 
     switch (i) {
       case 0 :

@@ -1,7 +1,8 @@
+'use strict';
+
 define([
     'app'
 ], function (app) {
-  'use strict'
   app.directive('alerts', function(alertService){
     return {
       restrict : 'E',

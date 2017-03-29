@@ -7,17 +7,17 @@ define(['app'], function(app) {
     this.validate = function(login) {
       var delay = $q.defer();
 
-      if (login == null || typeof login === 'undefined') {
+      if (login === null || typeof login === 'undefined') {
         delay.reject({
           code: '9000',
           args: ['login']
         });
-      } else if (login.username == null || typeof login.username === 'undefined' || login.username === '') {
+      } else if (login.username === null || typeof login.username === 'undefined' || login.username === '') {
         delay.reject({
           code: '9001',
           args: ['username', 'login']
         });
-      } else if (login.password == null || typeof login.password === 'undefined' || login.password === '') {
+      } else if (login.password === null || typeof login.password === 'undefined' || login.password === '') {
         delay.reject({
           code: '9001',
           args: ['password', 'login']

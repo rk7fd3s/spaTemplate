@@ -13,7 +13,7 @@ define(['app'], function(app) {
 
       resources.authenticate.defaultPost(requestModel, function(resModel) {
         deferred.resolve(resModel);
-      }, function(error, status) {
+      }, function(error) {
         deferred.reject(error);
       });
 

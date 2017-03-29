@@ -19,7 +19,7 @@
     "9000": "Not enough data to $1",
     "9001": "Need $1 to $2",
     "9003": "Sorry, cannot to $1",
-    "4403": "Login failed. Wrong or and password.",
+    "4403": "Signin failed. Wrong username or and password.",
     "4500": "The service is not available. Please try again later."
   }
 }
