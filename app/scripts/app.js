@@ -11,12 +11,11 @@ define([
     'ngResource',
     'ngSanitize',
     'ngTouch',
-    'ngMockE2E',
     'ui.router',
     'ui.bootstrap',
     'ui.bootstrap.tpls',
     'angular-loading-bar',
-    'pascalprecht.translate',
+    'pascalprecht.translate'
   ]);
 
   app.config(function($stateProvider) {
@@ -29,15 +28,12 @@ define([
       templateUrl: '/views/common/top.html'
     });
 
-    // ログイン周り
-    $stateProvider.state('login', {
-      url: '/login',
-      controller: 'loginController',
-      templateUrl: '/views/common/login.html'
-    }).state('logout', {
-      url: '/logout',
-      controller: function($state) {
-        $state.go('login')
+    // サインアウト
+    $stateProvider.state('signout', {
+      url: '/signout',
+      controller: function() {
+        // TODO サインアウト処理
+        location.replace('/signin');
       }
     });
 

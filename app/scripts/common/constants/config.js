@@ -23,7 +23,7 @@ define([
 
     'API_BASE_URL': {
       // local: '/api',
-      local: '/mock',
+      local: '/api',
       dev: 'dev.example.com:9000/api',
       stage: 'stage.example.com:8080/api',
       product: 'product.example.com:8080/api',
@@ -58,10 +58,10 @@ define([
     return {
       envName: envName,
       path: {
-        auth: {
-          login: apiBaseUrl + '/login'
-        }
+        // auth: {
+        //   login: apiBaseUrl + '/login'
+        // }
       }
-    }
+    };
   });
 });

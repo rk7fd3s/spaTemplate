@@ -1,7 +1,6 @@
 'use strict';
 
 define([
-  'mocks',
   'common/controllers/global-controller',
   'common/controllers/login-controller',
   'common/directives/alerts',

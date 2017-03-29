@@ -1,5 +1,7 @@
 'use strict';
 
+var path = require('path');
+
 module.exports = function (grunt) {
 
   //grunt task 実行時間表示
@@ -29,7 +31,7 @@ grunt.initConfig({
         tasks: ['bower:install'],
       },
       js: {
-        files: ['app/scripts/**/*.js'],
+        files: ['app/scripts/**/*.js', 'app/signin.js'],
         tasks: ['newer:jshint:all'],
         options: {
           livereload: '<%= connect.options.livereload %>'
@@ -96,6 +98,16 @@ grunt.initConfig({
       }
     },
 
+    // The API that we are going to use grunt-connect-prism with
+    express: {
+      api: {
+        options: {
+          port: 8080,
+          server: path.resolve('./express-api.js')
+        }
+      }
+    },
+
     //web serverを立ち上げる
     connect: {
       options: {
@@ -105,7 +117,7 @@ grunt.initConfig({
       },
       proxies: [
         {
-          context: '/api',
+          context: '/api/',
           host: 'localhost',
           port: '8080',
           https: false,
@@ -122,6 +134,7 @@ grunt.initConfig({
             return [
               proxySnippet,
               modRewrite([
+                '^/signin$ /signin.html [L]',
                 '^[^\\.]*$ /index.html [L]'
               ]),
               serveStatic('.tmp'),
@@ -138,6 +151,7 @@ grunt.initConfig({
             return [
               proxySnippet,
               modRewrite([
+                '^/signin$ /signin.html [L]',
                 '^[^\\.]*$ /index.html [L]'
               ]),
               serveStatic('dist')
@@ -156,8 +170,8 @@ grunt.initConfig({
       all: {
         src: [
           // 'Gruntfile.js',
-          'app/*/scripts/**/*.js',
-          'app/common.js'
+          'app/scripts/**/*.js',
+          'app/signin.js'
         ]
       }
     },
@@ -331,8 +345,7 @@ grunt.initConfig({
       compile: {
         files: {
           '.tmp/i18n/locale-en.json' : 'app/i18n/locale-en.json',
-          '.tmp/i18n/locale-ja.json' : 'app/i18n/locale-ja.json',
-          '.tmp/i18n/locale-kr.json' : 'app/i18n/locale-kr.json'
+          '.tmp/i18n/locale-ja.json' : 'app/i18n/locale-ja.json'
         }
       }
     },
@@ -345,7 +358,7 @@ grunt.initConfig({
           expand: true,
           dot: true,
           cwd: 'app',
-          src: ['robots.txt'],
+          src: ['robots.txt', 'signin.js'],
           dest: 'dist'
         }]
       },
@@ -405,8 +418,7 @@ grunt.initConfig({
             'angular-translate': 'empty:',
             'angular-translate-loader-static-files': 'empty:',
             'angular-translate-storage-cookie': 'empty:',
-            'angular-translate-storage-local': 'empty:',
-            'angular-mocks': 'empty:'
+            'angular-translate-storage-local': 'empty:'
           },
           optimize: 'uglify',
           out:'dist/scripts/main.js'
@@ -421,7 +433,8 @@ grunt.initConfig({
           'dist/scripts/*.js',
           'dist/styles/*.css',
           'dist/images/**/*.{png,jpg,jpeg,gif,webp,svg}',
-          'dist/fonts/**/*'
+          'dist/fonts/**/*',
+          'dist/signin.js'
         ]
       }
     },
@@ -453,7 +466,7 @@ grunt.initConfig({
         'svgmin',
         'htmlmin',
         'scriptmin',
-        'minjson'
+        // 'minjson'
       ]
     }
   });
@@ -486,6 +499,7 @@ grunt.initConfig({
       'ngconstant:' + env,
       'bower:install',
       'concurrent:server',
+      'express:api',
       'configureProxies',
       'connect:livereload',
       'watch'
